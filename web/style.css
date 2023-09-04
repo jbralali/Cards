@@ -1,18 +1,18 @@
 body {
     font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f4f4f4;
+    text-align: center;
+    margin: 20px;
 }
 
-.card {
+.container {
     border: 1px solid #ccc;
     padding: 20px;
-    text-align: center;
-    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #aaa;
+}
+
+h1, h2, p {
+    cursor: pointer;
 }
 
 button {
@@ -20,5 +20,5 @@ button {
     background-color: #007bff;
     color: white;
     border: none;
-    cursor: pointer;
+    border-radius: 5px;
 }

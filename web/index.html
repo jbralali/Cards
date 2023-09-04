@@ -6,38 +6,14 @@
 </head>
 <body>
 
-    <h1 id="generatedName" onclick="enableEditing('generatedName')">Generated Name</h1>
-    <h2 id="yourTitle" onclick="enableEditing('yourTitle')">Your Title</h2>
-    <p id="email" onclick="enableEditing('email')">Email: your.email@example.com</p>
+    <div class="container">
+        <h1 id="generatedName" onclick="enableEditing('generatedName')">Generated Name</h1>
+        <h2 id="yourTitle" onclick="enableEditing('yourTitle')">Your Title</h2>
+        <p id="email" onclick="enableEditing('email')">Email: your.email@example.com</p>
+        <button id="submitButton" onclick="saveAll()">Submit</button>
+    </div>
 
-    <script>
-        function enableEditing(elementId) {
-        var element = document.getElementById(elementId);
-        var currentText = element.textContent;
-
-        if (element.getElementsByTagName('input').length > 0) {
-        return;
-        }
-
-        var isEmail = (elementId === 'email') ? 'type="email"' : 'type="text"';
-        var inputHTML = `<input ${isEmail} id="${elementId}Input" value="${currentText.replace('Email: ', '')}" onblur="saveText('${elementId}')">`;
-
-        element.innerHTML = (elementId === 'email') ? 'Email: ' + inputHTML : inputHTML;
-        }
-
-        function saveText(elementId) {
-        var inputElement = document.getElementById(elementId + "Input");
-        var newText = inputElement.value;
-
-        var data = {field: elementId, value: newText};
-        saveToDatabase(data);  // Save to the database
-
-        var element = document.getElementById(elementId);
-        element.innerHTML = (elementId === 'email') ? 'Email: ' + newText : newText;
-        }
-
-        // Implement or include your saveToDatabase function here
-    </script>
+    <script src="script.js"></script>
 
 </body>
 </html>
