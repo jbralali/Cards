@@ -1,17 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>My Digital Business Card</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Your App</title>
 </head>
 <body>
-    <div class="card">
-        <h1 id="name">Your Name</h1>
-        <p id="title">Your Title</p>
-        <p id="email">Email: your.email@example.com</p>
-        <button id="generate">Generate Card</button>
-    </div>
-    <script src="script.js"></script>
+
+    <h1 id="generatedName">Generated Name</h1>
+
+    <button onclick="enableEditing()">Edit Name</button>
+
+    <script>
+        function enableEditing() {
+        var nameElement = document.getElementById("generatedName");
+        var currentName = nameElement.textContent;
+
+        // Replace the name with a text input field
+        nameElement.innerHTML = `<input type="text" id="nameInput" value="${currentName}" onblur="saveName()">`;
+        }
+
+        function saveName() {
+        var inputElement = document.getElementById("nameInput");
+        var newName = inputElement.value;
+
+        // Replace the text input with the new name
+        var nameElement = document.getElementById("generatedName");
+        nameElement.textContent = newName;
+        }
+    </script>
+
 </body>
 </html>
