@@ -1,31 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Your App</title>
+    <title>Your Digital Business Card</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 
-    <h1 id="generatedName">Generated Name</h1>
-
-    <button onclick="enableEditing()">Edit Name</button>
+    <h1 id="generatedName" onclick="enableEditing('generatedName')">Generated Name</h1>
+    <h2 id="yourTitle" onclick="enableEditing('yourTitle')">Your Title</h2>
+    <p id="email" onclick="enableEditing('email')">Email: your.email@example.com</p>
 
     <script>
-        function enableEditing() {
-        var nameElement = document.getElementById("generatedName");
-        var currentName = nameElement.textContent;
+        function enableEditing(elementId) {
+        var element = document.getElementById(elementId);
+        var currentText = element.textContent;
 
-        // Replace the name with a text input field
-        nameElement.innerHTML = `<input type="text" id="nameInput" value="${currentName}" onblur="saveName()">`;
+        if (element.getElementsByTagName('input').length > 0) {
+        return;
         }
 
-        function saveName() {
-        var inputElement = document.getElementById("nameInput");
-        var newName = inputElement.value;
+        var isEmail = (elementId === 'email') ? 'type="email"' : 'type="text"';
+        var inputHTML = `<input ${isEmail} id="${elementId}Input" value="${currentText.replace('Email: ', '')}" onblur="saveText('${elementId}')">`;
 
-        // Replace the text input with the new name
-        var nameElement = document.getElementById("generatedName");
-        nameElement.textContent = newName;
+        element.innerHTML = (elementId === 'email') ? 'Email: ' + inputHTML : inputHTML;
         }
+
+        function saveText(elementId) {
+        var inputElement = document.getElementById(elementId + "Input");
+        var newText = inputElement.value;
+
+        var data = {field: elementId, value: newText};
+        saveToDatabase(data);  // Save to the database
+
+        var element = document.getElementById(elementId);
+        element.innerHTML = (elementId === 'email') ? 'Email: ' + newText : newText;
+        }
+
+        // Implement or include your saveToDatabase function here
     </script>
 
 </body>

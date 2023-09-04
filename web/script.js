@@ -1,7 +1,16 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const generateButton = document.getElementById('generate');
-
-    generateButton.addEventListener('click', function() {
-        document.getElementById('name').textContent = "Generated Name";
-    });
-});
+function saveToDatabase(data) {
+  fetch('/save', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('Success:', data);
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+}
