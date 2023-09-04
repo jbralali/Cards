@@ -1,6 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\.github",
+    "\\.github\\API",
+    "\\.github\\Web",
+    "\\.github\\workflows"
   ],
+  "SelectedNode": "\\.github\\API\\generate_card.py",
   "PreviewInSolutionExplorer": false
 }
